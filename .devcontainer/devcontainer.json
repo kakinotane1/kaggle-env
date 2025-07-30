@@ -1,0 +1,35 @@
+{
+  // コンテナ名
+  "name": "kaggle-gpu-devcontainer",
+
+  // Docker Compose ファイルを指定（配列で複数指定可能）
+  "dockerComposeFile": [
+    "compose.yml"
+  ],
+
+  // 使用するサービス名
+  "service": "kaggle",
+
+  // ワークスペースルート
+  "workspaceFolder": "/kaggle",
+
+  // VS Code を閉じたときにコンテナを停止する
+  "shutdownAction": "stopCompose",
+
+  // コンテナ内で VS Code が使うユーザー
+  "remoteUser": "jupyter",
+
+  // VS Code の設定と拡張機能
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.pythonPath": "/opt/conda/bin/python",
+        "jupyter.jupyterServerType": "local"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  }
+}
