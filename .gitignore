@@ -1,0 +1,13 @@
+# 環境変数ファイル
+.env
+
+# Kaggle API トークン
+.kaggle/
+
+# Python ビルド成果物
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# VS Code ワークスペース設定
+.vscode/

@@ -1,0 +1,38 @@
+services:
+  kaggle:
+    # プロジェクトルートの .env (UID/GID) を読み込む
+    env_file:
+      - ../.env
+
+    build:
+      # ビルドコンテキストはプロジェクトルート
+      context: ..
+      # Dockerfile の場所はコンテキストルートからの相対パス
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+
+    image: gcr.io/kaggle-gpu-images/python
+    container_name: kaggle
+
+    # コンテナ内の実行ユーザーをホストの UID/GID に合わせる
+    user: "${UID}:${GID}"
+
+    ports:
+      - "8888:8888"
+
+    volumes:
+      - ${HOME}/.kaggle:/home/jupyter/.kaggle:ro
+      - ../inputs:/kaggle/input:ro
+      - ../notebooks:/kaggle/notebooks
+      - ../scripts:/kaggle/scripts
+
+    working_dir: /kaggle
+    stdin_open: true
+    tty: true
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - TZ=Asia/Tokyo
