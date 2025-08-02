@@ -23,7 +23,7 @@ services:
 
     volumes:
       - ${HOME}/.kaggle:/home/jupyter/.kaggle:ro
-      - ../inputs:/kaggle/input:ro
+      - ../input:/kaggle/input:ro
       - ../working:/kaggle/working
 
     working_dir: /kaggle
