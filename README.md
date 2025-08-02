@@ -62,13 +62,12 @@ chmod +x start.sh
 ├── .gitignore
 ├── LICENSE                # ライセンス情報（MIT License）
 ├── README.md              # プロジェクト概要（このファイル）
-├── inputs/                # Kaggle コンテナの入力ディレクトリ（データ配置）
+├── input                  # Kaggle コンテナの入力ディレクトリ（データ配置）
 │   └── .gitkeep
-├── notebooks/             # Notebook 保存場所（作業内容）
-│   └── .gitkeep
-├── scripts/               # Python スクリプトなどの格納先
-│   └── .gitkeep
-└── start.sh               # コンテナ起動スクリプト（UID/GID生成 + Docker Compose）
+├── start.sh               # コンテナ起動スクリプト（UID/GID生成 + Docker Compose）
+└── working                # 作業ディレクトリ
+    └── sample.ipynb       # Notebook のサンプル
+
 ```
 
 ---
@@ -90,7 +89,7 @@ chmod +x start.sh
 
 - `kaggle` サービスを定義  
 - ポート：`8888:8888`  
-- ボリューム：`.kaggle`, `inputs/`, `notebooks/`, `scripts/`  
+- ボリューム：`.kaggle`, `input/`, `working/` 
 - GPU 使用可能（`runtime: nvidia`）  
 
 ### devcontainer.json
